@@ -1,17 +1,86 @@
 #root, #map, #pano {
     height: 100%;
 }
+
 #map, #pano {
     width: 50%;
     float: left;
 }
+
 #pano {
     display: flex;
     justify-content: center;
     align-items: center;
+    background-color: #f4f4f4;
 }
+
 html, body {
     height: 100%;
     margin: 0;
     padding: 0;
+    font-family: 'Helvetica neue', sans-serif;
+}
+
+header ul {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+header a {
+    text-decoration: none;
+}
+
+header .logo {
+    margin: 0;
+    font-size: 1.45em;
+}
+
+header .logo a,
+header .main-nav a {
+    padding: 8px 15px;
+    text-align: center;
+    display: block;
+}
+
+header .main-nav a, header .logo a:visited {
+    color: #34495e;
+    font-size: .99em;
+}
+
+header .main-nav a:hover {
+    color: #718daa;
+}
+
+.header {
+    position: absolute;
+    z-index: 100000;
+    width: 100%;
+    background-color: #f4f4f4;
+    border-bottom: 1px solid #aaa;
+}
+
+@media (min-width: 769px) {
+    .header,
+    .main-nav {
+        display: flex;
+    }
+    .header {
+        flex-direction: column;
+        align-items: center;
+        .header{
+        width: 80%;
+        margin: 0 auto;
+        max-width: 1150px;
+    }
+    }
+
+}
+
+@media (min-width: 1025px) {
+    .header {
+        flex-direction: row;
+        justify-content: space-between;
+    }
+
 }
