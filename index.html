@@ -6,8 +6,13 @@
     <meta name="mobile-web-app-capable" content="yes">
     <title>Written World</title>
     <style>
-      #map, #root {
+      #root {
         height: 100%;
+      }
+      #map, #pano {
+        width: 50%;
+        height: 100%;
+        float: left;
       }
       html, body {
         height: 100%;
@@ -22,6 +27,7 @@
     </noscript>
     <div id="root">
       <div id="map"></div>
+      <div id="pano"></div>
     </div>
     <script
       src="https://code.jquery.com/jquery-3.2.1.min.js"
