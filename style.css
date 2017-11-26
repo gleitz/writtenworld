@@ -1,0 +1,17 @@
+#root, #map, #pano {
+    height: 100%;
+}
+#map, #pano {
+    width: 50%;
+    float: left;
+}
+#pano {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+html, body {
+    height: 100%;
+    margin: 0;
+    padding: 0;
+}
