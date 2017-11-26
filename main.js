@@ -9,6 +9,7 @@ const DEFAULT_ZOOM_LEVEL = 11;
 
 let geocoder;
 let map;
+let infoWindow;
 let isMapInitialized = false;
 let isMapCentered = false;
 
@@ -29,20 +30,20 @@ function addToMap(poem) {
     content = `${content}<br/>
       -- ${poem.author}`;
   }
-  const infoWindow = new google.maps.InfoWindow({
+  let localInfoWindow = new google.maps.InfoWindow({
     content,
   });
   marker.addListener('click', () => {
+    if (infoWindow) {
+      infoWindow.close();
+    }
+    localInfoWindow.open(map, marker);
+    infoWindow = localInfoWindow;
     let panorama = new google.maps.StreetViewPanorama(
       document.getElementById('pano'), {
         position: poem.location,
-        pov: {
-          heading: 34,
-          pitch: 10,
-        },
       });
     map.setStreetView(panorama);
-    infoWindow.open(map, marker);
   });
 }
 
@@ -86,6 +87,5 @@ function initMap() {
   map = new google.maps.Map(document.getElementById('map'), {
     zoom: DEFAULT_ZOOM_LEVEL,
   });
+  $.getJSON(`https://spreadsheets.google.com/feeds/list/${GOOGLE_SHEET_ID}/1/public/values?alt=json-in-script&callback=?`, handleSheetsResponse);
 }
-
-$.getJSON(`https://spreadsheets.google.com/feeds/list/${GOOGLE_SHEET_ID}/1/public/values?alt=json-in-script&callback=?`, handleSheetsResponse);
